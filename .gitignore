@@ -2,6 +2,8 @@
 *.tasty
 *.log
 
+*.scala-build
+
 # LSP
 *.metals
 *.bloop
