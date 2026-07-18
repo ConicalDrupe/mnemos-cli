@@ -2,9 +2,6 @@
 *.tasty
 *.log
 
-/project
-/target
-
 # LSP
 *.metals
 *.bloop
