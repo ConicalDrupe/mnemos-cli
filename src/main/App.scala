@@ -18,17 +18,15 @@ val palaceOpt = Opts.option[String](
 // ...along with a case class that captures all our configuration data.
 sealed trait InputConfig
 case class MemoryConfig(tag: String, palace: String) extends InputConfig
-case class RunConfig(mem: Boolean, run: Boolean, report: boolean)
+case class RunConfig(mem: Boolean, run: Boolean, report: Boolean)
     extends InputConfig
 
 case class Config(
     runConfig: RunConfig,
-    memoryConfig: MemoryConfig
+    memoryConfig: Optional[MemoryConfig]
 )
 
-val configOpts: Opts[Config] = (MemoryConfig, RunConfig)
-
+val configOpts: Opts[Config] = (RunConfig, MemoryConfig.orNone).mapN(Config.apply)
 // And finally, we pass the validated config to a `run` function that does the real work.
-def runApp(config: Config) =
-  (MemoryConfig, RunConfig).mapN(Config.apply)
-// res0: Opts[Nothing] = Opts([--input-uri <uri>] [--timeout <duration>] [--input-file <path>] <output-file>)
+@main def runApp(config: Config): Unit = 
+  configOpts.map(runApp)
