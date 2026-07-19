@@ -3,6 +3,7 @@
 *.log
 
 *.scala-build
+MneumosApp 
 
 # LSP
 *.metals
