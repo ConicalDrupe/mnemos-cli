@@ -17,8 +17,14 @@ rehearse list of pending memories, Y/N to count as rehearsed. (Could open in edi
 
 
 
-
-
 ### Modes of reminders
 All memories run with a default of expanding retrieval
 Memory Palace only memories run with an optional, Forward, Backward, Middle-Forward, Middle-Backward, Random reminders
+
+### Updating memories?
+Open editor to edit csv, or can we overwrite tag, note, or palace?
+
+#### Building
+```{bash}
+scala-cli package --jvm 17 . -f
+```
